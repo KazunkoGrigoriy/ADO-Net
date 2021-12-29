@@ -148,53 +148,45 @@ namespace HomeWork17
                 SQLda.Update(SQLdt);
                 //MessageBox.Show("Удалено");
             }
-        }
 
-        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-            SqlConnectionStringBuilder strConSQL = new SqlConnectionStringBuilder()
+            if (e.Key == Key.Right)
             {
-                DataSource = @"(localdb)\MSSQLLocalDB",
-                InitialCatalog = "SQLbase",
-                IntegratedSecurity = false,
-                UserID = "username",
-                Password = "Ytpyf.24017"
-            };
-            SqlConnection sqlConnection = new SqlConnection() { ConnectionString = strConSQL.ConnectionString };
+                SqlConnectionStringBuilder strConSQL = new SqlConnectionStringBuilder()
+                {
+                    DataSource = @"(localdb)\MSSQLLocalDB",
+                    InitialCatalog = "SQLbase",
+                    IntegratedSecurity = false,
+                    UserID = "username",
+                    Password = "Ytpyf.24017"
+                };
+                SqlConnection sqlConnection = new SqlConnection() { ConnectionString = strConSQL.ConnectionString };
 
-            sqlConnection.Open();
-         
+                sqlConnection.Open();
 
+                string path = Environment.CurrentDirectory + "\\database.mdb;";
+                OleDbConnection strConAccess = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + path);
+                OleDbConnection accessConnection = new OleDbConnection() { ConnectionString = strConAccess.ConnectionString };
+                try
+                {
+                    accessConnection.Open();
+                    Oleda = new OleDbDataAdapter();
+                    Oledt = new DataTable();
+                    DataRowView row = (DataRowView)dataGrid.SelectedItems[0];
+                    var r = row["Email"];
+                    var ole = "SELECT * FROM TablePurchase WHERE Email = '" + r + "'";
 
-            string path = Environment.CurrentDirectory + "\\database.mdb;";
-            OleDbConnection strConAccess = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + path);
-            OleDbConnection accessConnection = new OleDbConnection() { ConnectionString = strConAccess.ConnectionString };
-            //try
-            //{
-                accessConnection.Open();
-                Oleda = new OleDbDataAdapter();
-                Oledt = new DataTable();
-                //DataRowView row = (DataRowView)dataGrid.SelectedItems[0];
-                //string r = row["Email"].ToString();
+                    Oleda.SelectCommand = new OleDbCommand(ole, accessConnection);
 
-
-                var ole = @"SELECT * FROM TablePurchase, TableClient WHERE TablePurchase.Email = TableClient.Email";
-
-                Oleda.SelectCommand = new OleDbCommand(ole, accessConnection);
-                Oleda.Fill(Oledt);
-                dataGrid1.ItemsSource = Oledt.DefaultView;
-                accessConnection.Close();
-
-            //}
-            //catch (Exception a)
-            //{
-            //    MessageBox.Show("К базе данных SQL подключиться не удалось");
-            //}
-
-            sqlConnection.Close();
-
-            
+                    Oleda.Fill(Oledt);
+                    dataGrid1.ItemsSource = Oledt.DefaultView;
+                    accessConnection.Close();
+                }
+                catch (Exception a)
+                {
+                    MessageBox.Show("К базе данных MS Access подключиться не удалось");
+                }
+                sqlConnection.Close();
+            }
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -202,7 +194,6 @@ namespace HomeWork17
             DataRow r = SQLdt.NewRow();
             FormAdd formAdd = new FormAdd(r);
             formAdd.ShowDialog();
-
             if(formAdd.DialogResult.Value)
             {
                 SQLdt.Rows.Add(r);
