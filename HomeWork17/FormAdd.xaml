@@ -1,0 +1,40 @@
+﻿<Window x:Class="HomeWork17.FormAdd"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HomeWork17"
+        mc:Ignorable="d"
+        Title="Добавить" Height="402.668" Width="383.689">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="129*"/>
+            <ColumnDefinition Width="229*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <TextBlock Grid.Row="1" Text="Фамилия" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16"/>
+        <TextBlock Grid.Row="2" Text="Имя" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16"/>
+        <TextBlock Grid.Row="3" Text="Отчество" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16"/>
+        <TextBlock Grid.Row="4" Text="Номер телефона" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16"/>
+        <TextBlock Grid.Row="5" Text="Email" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16"/>
+        <TextBox x:Name="tblastName" Grid.Column="1" HorizontalAlignment="Left" Height="28" Margin="18,14,0,0" Grid.RowSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="195"/>
+        <TextBox x:Name="tbfirstName" Grid.Column="1" HorizontalAlignment="Left" Height="28" Margin="18,14,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="195"/>
+        <TextBox x:Name="tbmmiddleName" Grid.Column="1" HorizontalAlignment="Left" Height="28" Margin="18,14,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="195"/>
+        <TextBox x:Name="tbnumberTel" Grid.Column="1" HorizontalAlignment="Left" Height="28" Margin="18,14,0,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top" Width="195"/>
+        <TextBox x:Name="tbemail" Grid.Column="1" HorizontalAlignment="Left" Height="28" Margin="18,14,0,0" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Top" Width="195"/>
+        <Button x:Name="btAdd" Content="Добавить" Grid.Column="1" HorizontalAlignment="Left" Height="35" Margin="18,10,0,0" Grid.Row="6" VerticalAlignment="Top" Width="195"/>
+        <Button x:Name="btCancel" Content="Отмена" Grid.Column="1" HorizontalAlignment="Left" Height="33" Margin="18,10,0,0" Grid.Row="7" VerticalAlignment="Top" Width="195"/>
+
+    </Grid>
+</Window>

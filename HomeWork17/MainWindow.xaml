@@ -1,0 +1,48 @@
+﻿<Window x:Class="HomeWork17.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HomeWork17"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="478.711" Width="833.501">
+    <Grid Margin="0,0,0,1">
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="374" Margin="10,61,0,0" VerticalAlignment="Top" Width="435" AutoGenerateColumns="false" AddingNewItem="dataGrid_AddingNewItem" CellEditEnding="dataGrid_CellEditEnding" CurrentCellChanged="dataGrid_CurrentCellChanged" PreviewKeyDown="dataGrid_PreviewKeyDown" SelectionChanged="dataGrid_SelectionChanged" >
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="id"
+                                    Width="20"
+                                    Binding="{Binding Id}"
+                                    Header="id"/>
+                <DataGridTextColumn x:Name="lastName"
+                                    Width="70"
+                                    Binding="{Binding LastName}"
+                                    Header="Фамилия"/>
+                <DataGridTextColumn x:Name="firstName"
+                                    Width="70"
+                                    Binding="{Binding FirstName}"
+                                    Header="Имя"/>
+                <DataGridTextColumn x:Name="middleName"
+                                    Width="70"
+                                    Binding="{Binding MiddleName}"
+                                    Header="Отчество"/>
+                <DataGridTextColumn x:Name="numberTel"
+                                    Width="70"
+                                    Binding="{Binding NumberTel}"
+                                    Header="Номер телефона"/>
+                <DataGridTextColumn x:Name="email"
+                                    Width="*"
+                                    Binding="{Binding Email}"
+                                    Header="Email"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid x:Name="dataGrid1" HorizontalAlignment="Left" Height="374" Margin="459,61,0,0" VerticalAlignment="Top" Width="358" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding ID}" Width="20"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="100"/>
+                <DataGridTextColumn Header="Код товара" Binding="{Binding Cod_tovar}" Width="80"/>
+                <DataGridTextColumn Header="Наименование" Binding="{Binding Tovar_Name}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="button" Content="Добавить клиента" HorizontalAlignment="Left" Height="37" Margin="10,10,0,0" VerticalAlignment="Top" Width="204" Click="button_Click"/>
+    </Grid>
+</Window>
